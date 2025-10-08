@@ -14,4 +14,4 @@ total_distance_traveled = total_speed * T
 distance_after_T = abs(S - total_distance_traveled)
 
 # итог
-print(f"Расстояние между автомобилями через {T} часов: {distance_after_T:.2f} км")
+print(f"Расстояние между автомобилями через {T} часов: {distance_after_T} км")
