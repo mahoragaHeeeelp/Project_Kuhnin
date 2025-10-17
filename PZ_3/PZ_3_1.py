@@ -1,6 +1,6 @@
 try:
-    A = int(input("Введите A: "))
-    B = int(input("Введите B: "))
+    A = int(input("введите A: "))
+    B = int(input("введите B: "))
     print((A > 0) or (B < -2))
 except ValueError:
-    print("Ошибка, это печально")
+    print("ошибка, это печально")
