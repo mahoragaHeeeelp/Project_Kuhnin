@@ -3,16 +3,37 @@
 указывает на масть, а вторые две на достоинство карты. Вывести соответствующее название карты вида "дама червей", "туз треф" и т.п."""
 
 try:
-    num = int(input("введите трёхзначное число: "))
-    suit = num // 100
-    rank = num % 100
+    number = input("введите трехзначное число: ")
 
-    suits = {1: "пик", 2: "треф", 3: "бубен", 4: "червей"}
-    ranks = {11: "валет", 12: "дама", 13: "король", 14: "туз"}
+    if len(number) != 3 or not number.isdigit():
+        raise ValueError("ошибка")
 
-    if suit in suits and rank in ranks:
-        print(f"{ranks[rank]} {suits[suit]}")
+    suit_n = int(number[0])
+    rank_k = int(number[1:])
+
+    if suit_n == 1:
+        suit = "пики"
+    elif suit_n == 2:
+        suit = "трефы"
+    elif suit_n == 3:
+        suit = "бубны"
+    elif suit_n == 4:
+        suit = "черви"
     else:
-        print("неверный номер карты")
-except ValueError:
-    print("ошибка, как так то")
+        raise ValueError("недопустимый номер")
+
+    if rank_k == 11:
+        rank = "валет"
+    elif rank_k == 12:
+        rank = "дама"
+    elif rank_k == 13:
+        rank = "король"  
+    elif rank_k == 14:
+        rank = "туз"
+    else:
+        raise ValueError("недопустимое достоинство.")
+
+    print(f"{rank} {suit}")
+
+except ValueError as e:
+    print(f"Ошибка: {e}")
