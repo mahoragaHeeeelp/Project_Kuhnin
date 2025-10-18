@@ -4,36 +4,38 @@
 
 try:
     number = input("введите трехзначное число: ")
+    h = number // 100
+    r = number % 100
+    k = number > 0 and 1 <= h <= 9 and r < 100
+    if k :
 
-    if len(number) != 3 or not number.isdigit():
-        raise ValueError("ошибка")
+        suit_n = int(number[0])
+        rank_k = int(number[1:])
 
-    suit_n = int(number[0])
-    rank_k = int(number[1:])
+        if suit_n == 1:
+            suit = "пики"
+        elif suit_n == 2:
+            suit = "трефы"
+        elif suit_n == 3:
+            suit = "бубны"
+        elif suit_n == 4:
+            suit = "черви"
+        else:
+            raise ValueError("недопустимый номер")
 
-    if suit_n == 1:
-        suit = "пики"
-    elif suit_n == 2:
-        suit = "трефы"
-    elif suit_n == 3:
-        suit = "бубны"
-    elif suit_n == 4:
-        suit = "черви"
-    else:
-        raise ValueError("недопустимый номер")
+        if rank_k == 11:
+            rank = "валет"
+        elif rank_k == 12:
+            rank = "дама"
+        elif rank_k == 13:
+            rank = "король"  
+        elif rank_k == 14:
+            rank = "туз"
+        else:
+            raise ValueError("недопустимое достоинство.")
 
-    if rank_k == 11:
-        rank = "валет"
-    elif rank_k == 12:
-        rank = "дама"
-    elif rank_k == 13:
-        rank = "король"  
-    elif rank_k == 14:
-        rank = "туз"
-    else:
-        raise ValueError("недопустимое достоинство.")
-
-    print(f"{rank} {suit}")
+        print(f"{rank} {suit}")
 
 except ValueError as e:
     print(f"Ошибка: {e}")
+
