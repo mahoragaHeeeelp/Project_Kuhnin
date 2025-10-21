@@ -3,40 +3,39 @@
 указывает на масть, а вторые две на достоинство карты. Вывести соответствующее название карты вида "дама червей", "туз треф" и т.п."""
 
 try:
-    number = input(int("введите трехзначное число: "))
-    h = number // 100
-    r = number % 100
-    k = number > 0 and 1 <= h <= 9 and r < 100
-    if k :
+    number = int(input("Введите трёхзначное число: "))
 
-        suit_n = int(number[0])
-        rank_k = int(number[1:])
+    if number < 100 or number > 999:
+        raise ValueError("ошибка")
 
-        if suit_n == 1:
-            suit = "пики"
-        elif suit_n == 2:
-            suit = "трефы"
-        elif suit_n == 3:
-            suit = "бубны"
-        elif suit_n == 4:
-            suit = "черви"
-        else:
-            raise ValueError("недопустимый номер")
+    
+    suit_n = number // 100          
+    rank_k = number % 100           
 
-        if rank_k == 11:
-            rank = "валет"
-        elif rank_k == 12:
-            rank = "дама"
-        elif rank_k == 13:
-            rank = "король"  
-        elif rank_k == 14:
-            rank = "туз"
-        else:
-            raise ValueError("недопустимое достоинство.")
+    if suit_n == 1:
+        suit = "пики"
+    elif suit_n == 2:
+        suit = "трефы"
+    elif suit_n == 3:
+        suit = "бубны"
+    elif suit_n == 4:
+        suit = "черви"
+    else:
+        raise ValueError("ошибка")
 
-        print(f"{rank} {suit}")
+    if rank_k == 11:
+        rank = "валет"
+    elif rank_k == 12:
+        rank = "дама"
+    elif rank_k == 13:
+        rank = "король"
+    elif rank_k == 14:
+        rank = "туз"
+    else:
+        raise ValueError("ошибка")
+
+    print(f"{rank} {suit}")
 
 except ValueError as e:
-    print(f"Ошибка: {e}")
-
+    print(f"ошибка:{e}")
 
