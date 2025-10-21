@@ -9,7 +9,7 @@ try:
         raise ValueError("ошибка")
 
     
-    suit_n = number // 100          
+    suit_n = number // 100
     rank_k = number % 100           
 
     if suit_n == 1:
