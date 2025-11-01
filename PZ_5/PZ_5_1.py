@@ -9,7 +9,7 @@ def cc (s):
     return c
 
 try:
-    W = str(input("слово-")
+    w = str(input("слово-")
             if w = "":
                 print("ошибка")
             else:
