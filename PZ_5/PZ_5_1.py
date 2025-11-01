@@ -1,3 +1,4 @@
+
 """ Вариант 5
 С помощью функций получить вертикальную и горизонтальную линии.
 Линия проводится многократной печатью символа.
@@ -9,23 +10,16 @@ def cc (s):
     return c
 
 try:
-    w = str(input("слово-")
-            if w = "":
-                print("ошибка")
-            else:
-                n = cc(w)
-                top = '#' * (n+4)
-                mid = '# ' + w + ' #'
-                print(top)
-                print(mid)
-                print(top)
+  w = str(input("слово-"))
+  if w == "":
+      print("ошибка")
+  else:
+      n = cc(w)
+      top = '#' * (n+4)
+      mid = '# ' + w + ' #'
+      print(top)
+      print(mid)
+      print(top)
 
 except ValueError:
     print("ошибка")
-                
-
-
-
-
-
-
