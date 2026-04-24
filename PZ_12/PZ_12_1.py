@@ -3,18 +3,19 @@
 В матрице элементы второго столбца возвести в квадрат.
 """
 
-import numpy as np
-
-matrix = np.array([
+matrix = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
-])
+]
 
-print("исходная матрица:")
-print(matrix)
+print("исходная матрица")
+for row in matrix:
+    print(row)
 
-matrix[:, 1] = matrix[:, 1] ** 2
+for i in range(len(matrix)):
+    matrix[i][1] = matrix[i][1] ** 2
 
-print("новая матрица - ")
-print(matrix)
+print("новая матрица")
+for row in matrix:
+    print(row)
