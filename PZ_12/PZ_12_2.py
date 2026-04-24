@@ -5,19 +5,18 @@
 
 import random
 
-rows, cols = 5, 5
-matrix = [[random.randint(1, 30) for i in range(cols)] for i in range(rows)]
+rows = int(input("введите количество строк "))
+cols = int(input("введите количество столбцов "))
 
-print("cгенерированая матрица:")
+
+matrix = list(map(lambda i: list(map(lambda j: random.randint(1, 30), range(cols))), range(rows)))
+print("сгенерированная матрица")
+
 for row in matrix:
     print(row)
 
+matrix = list(map(lambda row: list(map(lambda x: 0 if x % 2 == 1 else x, row)), matrix))
 
-for i in range(rows):
-    for j in range(cols):
-        if matrix[i][j] % 2 == 1:
-            matrix[i][j] = 0
-
-print("новая матрица:")
+print("новая матрица")
 for row in matrix:
     print(row)
