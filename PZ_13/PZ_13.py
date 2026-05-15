@@ -5,19 +5,18 @@
 
 import re
 
-file_name = 'ip_address.txt'
-text = open(file_name, encoding='utf-8').read()
+with open('ip_address.txt', encoding='utf-8') as f:
+    text = f.read()
 
-match = re.search(r'Частоупотребимые\s+маски\s*\n(.*?)(?=\n\S)', text, re.DOTALL)
+match = re.search(r'Частоупотребимые\s+маски\s*\n(.*?)(?=\nКоличество|\Z)', text, re.DOTALL)
 content = match.group(1) if match else ""
-
 all_ips = re.findall(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', content)
 
-zero_octet_ips = list(filter(lambda ip: ip.endswith('.0'), all_ips))
+zero_ips = list(filter(lambda ip: ip.endswith('.0'), all_ips))
 other_ips = list(filter(lambda ip: not ip.endswith('.0'), all_ips))
 
-print(f"Количество строк с нулевым четвертым октетом: {len(zero_octet_ips)}")
-print('\n'.join(zero_octet_ips))
+with open('first_file.txt', 'w', encoding='utf-8') as f1:
+    f1.write('\n'.join(zero_ips) + 'количество строк: {len(zero_ips)}')
 
-print(f"\nКоличество строк с ненулевым четвертым октетом: {len(other_ips)}")
-print('\n'.join(other_ips))
+with open('second_file.txt', 'w', encoding='utf-8') as f2:
+    f2.write('\n'.join(other_ips) + 'количество строк: {len(other_ips)}')
