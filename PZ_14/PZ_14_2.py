@@ -1,31 +1,40 @@
+""" Вариант 5. Даны два целых числа: A,B.
+ Проверить истинность высказывания: "Справедливы неравенства A>0 или B<-2" """
+
 import tkinter as tk
 from tkinter import messagebox
- 
-root = tk.Tk()
-root.title("Расстояние между автомобилями")
-root.geometry("360x280")
-root.resizable(False, False)
- 
-fields = {}
- 
-for i, label in enumerate(["Скорость 1-го авто (км/ч)", "Скорость 2-го авто (км/ч)", "Начальное расстояние (км)", "Время движения (часы)"]):
-    tk.Label(root, text=label, anchor="w").grid(row=i, column=0, padx=16, pady=8, sticky="w")
-    e = tk.Entry(root, width=14)
-    e.grid(row=i, column=1, padx=16, pady=8)
-    fields[label] = e
- 
-result_var = tk.StringVar()
-tk.Label(root, textvariable=result_var, fg="blue", wraplength=320, justify="left").grid(row=5, column=0, columnspan=2, padx=16, pady=4)
- 
-def calculate():
+
+
+def check_condition():
     try:
-        vals = list(map(lambda e: float(e.get()), fields.values()))
-        V1, V2, S, T = vals
-        distance = abs(S - (V1 + V2) * T)
-        result_var.set(f"Расстояние через {T} ч: {distance:.2f} км")
+        a = int(entry_a.get())
+        b = int(entry_b.get())
+        result = (a > 0) or (b < -2)
+        label_result.config(text=f"Результат: {result}")
     except ValueError:
-        messagebox.showerror("Ошибка", "Введите корректные числа")
- 
-tk.Button(root, text="Рассчитать", command=calculate, width=16).grid(row=4, column=0, columnspan=2, pady=10)
- 
+        messagebox.showerror("Ошибка", "Введите целые числа!")
+
+
+root = tk.Tk()
+root.title("Вариант 5 - Проверка неравенств")
+root.geometry("350x200")
+root.resizable(False, False)
+
+frame = tk.Frame(root, padx=20, pady=20)
+frame.pack()
+
+tk.Label(frame, text="Введите A:").grid(row=0, column=0, sticky="w", pady=5)
+entry_a = tk.Entry(frame, width=20)
+entry_a.grid(row=0, column=1, pady=5)
+
+tk.Label(frame, text="Введите B:").grid(row=1, column=0, sticky="w", pady=5)
+entry_b = tk.Entry(frame, width=20)
+entry_b.grid(row=1, column=1, pady=5)
+
+btn_check = tk.Button(frame, text="Проверить", command=check_condition)
+btn_check.grid(row=2, column=0, columnspan=2, pady=15)
+
+label_result = tk.Label(frame, text="Результат: ", font=("Arial", 11, "bold"))
+label_result.grid(row=3, column=0, columnspan=2)
+
 root.mainloop()
